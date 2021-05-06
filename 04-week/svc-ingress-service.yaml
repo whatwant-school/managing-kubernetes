@@ -9,9 +9,9 @@ spec:
     http:
       paths:
       - pathType: Prefix
-        path: /
+        path: /test
         backend:
           service:
-            name: svc-nodeport
+            name: svc-node
             port:
               number: 80
