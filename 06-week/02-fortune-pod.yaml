@@ -2,8 +2,28 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: fortune
+  labels:
+    app: fortune
 
 spec:
   containers:
-  - image: fortune:args
-    args: [“2”]
+
+  - name: html-generator
+    image: whatwant/fortune:v1.0
+    args: ["5"]
+    volumeMounts:
+    - name: web-fortune
+      mountPath: /var/htdocs
+
+  - name: web-server
+    image: nginx:alpine
+    volumeMounts:
+    - name: web-fortune
+      mountPath: /usr/share/nginx/html
+      readOnly: true
+    ports:
+    - containerPort: 80
+
+  volumes:
+  - name: web-fortune
+    emptyDir: {}
