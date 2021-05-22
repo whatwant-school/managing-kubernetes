@@ -5,6 +5,6 @@ metadata:
 
 spec:
   containers:
-  - image: tutum/curl
+  - image: curlimages/curl
     name: curl
     command: ["/bin/sleep", "3650d"]

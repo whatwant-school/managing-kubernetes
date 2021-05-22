@@ -6,7 +6,7 @@ metadata:
 spec:
   containers:
   - name: curl
-    image: tutum/curl
+    image: curlimages/curl
     command: ["/bin/sleep", "3650d"]
 
   - name: ambassador
